@@ -53,6 +53,7 @@ void deposit()
     int i;
     for (i = 0; i < 1000; i++)
     {
+        printf("Hi");
         if (accounts[i]->acno == acno)
         {
             double b;
