@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long long int acnoInit = 20213212112;
+int acnoInit = 100;
 
 typedef struct Account
 {
     char name[100];
-    long long int acno;
+    int acno;
     char address[100];
     double balance;
 } Account;
@@ -38,7 +38,7 @@ Account *createAccount()
     printf("Account Details:\n");
     printf("Name: %s\n", account->name);
     printf("Address: %s\n", account->address);
-    printf("Account number: %lld\n", account->acno);
+    printf("Account number: %d\n", account->acno);
     printf("Balance: %lf\n", account->balance);
 
     executeGitCommand("add .");
@@ -47,9 +47,9 @@ Account *createAccount()
 
 void deposit()
 {
-    long long int acno;
+    int acno;
     printf("Enter your account number:\n");
-    scanf("%lld", &acno);
+    scanf("%d", &acno);
     int i;
     for (i = 0; i < 1000; i++)
     {
@@ -70,9 +70,9 @@ void deposit()
 
 void withdraw()
 {
-    long long int acno;
+    int acno;
     printf("Enter your account number:\n");
-    scanf("%lld", &acno);
+    scanf("%d", &acno);
     int i;
     for (i = 0; i < 1000; i++)
     {
@@ -98,9 +98,9 @@ void withdraw()
 
 void closeAccount()
 {
-    long long int acno;
+    int acno;
     printf("Enter your account number:\n");
-    scanf("%lld", &acno);
+    scanf("%d", &acno);
     int i;
     for (i = 0; i < 1000; i++)
     {
