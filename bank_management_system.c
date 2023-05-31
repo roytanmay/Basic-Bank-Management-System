@@ -24,7 +24,7 @@ void createAccount()
 {
     printf("\n\n");
 
-    FILE *ptr, *ptr2;
+    FILE *ptr, *ptr2, *ptr3;
     ptr = fopen("record.dat", "a+");
     ptr2 = fopen("accountNumber.dat", "r");
 
@@ -39,9 +39,9 @@ void createAccount()
     fscanf(ptr2, "%lld", &account->acno);
     fclose(ptr2);
 
-    ptr2 = fopen("accountNumber.dat", "w");
-    fprintf(ptr2, "%lld", account->acno + 1);
-    fclose(ptr2);
+    ptr3 = fopen("accountNumber.dat", "w");
+    fprintf(ptr3, "%lld", account->acno + 1);
+    fclose(ptr3);
 
     fprintf(ptr, "%lld %s %s %lf\n", account->acno, account->name, account->address, account->balance);
     fclose(ptr);
