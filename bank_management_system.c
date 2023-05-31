@@ -36,7 +36,7 @@ Account *createAccount()
     scanf("%lf", &account->balance);
     account->acno = acnoInit++;
 
-    accounts[acindex++] = account;
+    // accounts[acindex++] = account;
 
     printf("Account Details:\n");
     printf("Name: %s\n", account->name);
@@ -46,6 +46,8 @@ Account *createAccount()
 
     executeGitCommand("add .");
     executeGitCommand("commit -m \"New Account Created\"");
+
+    return account;
 }
 
 void deposit()
@@ -132,7 +134,6 @@ int main()
     {
         accounts[i] = (Account *)malloc(sizeof(Account));
     }
-    i = 0;
 
     int choice;
     while (1)
@@ -145,7 +146,7 @@ int main()
         {
         case 1:
             Account *ac = createAccount();
-            accounts[i++] = ac;
+            accounts[acindex++] = ac;
             break;
 
         case 2:
