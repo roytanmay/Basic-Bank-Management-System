@@ -65,7 +65,8 @@ void deposit()
             printf("Enter the amount you want to deposit:\n");
             scanf("%lf", &b);
             accounts[i]->balance += b;
-            printf("Amount deposited\nAvailable balance: %lf", accounts[i]->balance);
+            printf("Amount deposited\nAvailable balance: %lf\n\n", accounts[i]->balance);
+            executeGitCommand("status");
             executeGitCommand("add .");
             executeGitCommand("commit -m \"Balance deposited\"");
             return;
