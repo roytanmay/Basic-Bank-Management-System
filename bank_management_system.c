@@ -11,7 +11,6 @@ typedef struct Account
 
 void executeGitCommand(const char *command)
 {
-    // printf("hi");
     char gitCommand[100];
     snprintf(gitCommand, sizeof(gitCommand), "git %s", command);
     int result = system(gitCommand);
@@ -23,15 +22,17 @@ void executeGitCommand(const char *command)
 
 void createAccount()
 {
+    printf("\n\n");
+
     FILE *ptr, *ptr2;
     ptr = fopen("record.dat", "a+");
     ptr2 = fopen("accountNumber.dat", "r");
 
     Account *account = (Account *)malloc(sizeof(Account));
     printf("Enter your name:\n");
-    scanf("%s", &account->name);
+    scanf("%s", account->name);
     printf("Enter your address:\n");
-    scanf("%s", &account->address);
+    scanf("%s", account->address);
     printf("Enter the amount you want to deposit initially(>= 500):\n");
     scanf("%lf", &account->balance);
 
@@ -54,13 +55,16 @@ void createAccount()
     printf("Address: %s\n", account->address);
     printf("Account number: %lld\n", account->acno);
     printf("Balance: %lf\n", account->balance);
+    printf("\n\n");
 
     executeGitCommand("add .");
     executeGitCommand("commit -m \"New Account Created\"");
+    printf("\n\n");
 }
 
 void deposit()
 {
+    printf("\n\n");
     FILE *old, *newrec;
     old = fopen("record.dat", "r");
     newrec = fopen("new.dat", "w");
@@ -91,6 +95,8 @@ void deposit()
     fclose(newrec);
     fclose(old);
 
+    printf("\n\n");
+
     if (f == 0)
     {
         printf("Account not found\n");
@@ -104,10 +110,14 @@ void deposit()
         executeGitCommand("add .");
         executeGitCommand("commit -m \"Balance deposited\"");
     }
+
+    printf("\n\n");
 }
 
 void withdraw()
 {
+    printf("\n\n");
+
     FILE *old, *newrec;
     old = fopen("record.dat", "r");
     newrec = fopen("new.dat", "w");
@@ -139,6 +149,8 @@ void withdraw()
     fclose(newrec);
     fclose(old);
 
+    printf("\n\n");
+
     if (f == 0)
     {
         printf("Account not found\n");
@@ -152,10 +164,14 @@ void withdraw()
         executeGitCommand("add .");
         executeGitCommand("commit -m \"Balance Withdrawn\"");
     }
+
+    printf("\n\n");
 }
 
 void closeAccount()
 {
+    printf("\n\n");
+
     FILE *old, *newrec;
     old = fopen("record.dat", "r");
     newrec = fopen("new.dat", "w");
@@ -181,6 +197,8 @@ void closeAccount()
     fclose(newrec);
     fclose(old);
 
+    printf("\n\n");
+
     if (f == 0)
     {
         printf("Account not found\n");
@@ -193,6 +211,8 @@ void closeAccount()
         executeGitCommand("add .");
         executeGitCommand("commit -m \"Account Deleted\"");
     }
+
+    printf("\n\n");
 }
 
 int main()
@@ -200,8 +220,8 @@ int main()
     int choice;
     while (1)
     {
-        printf("Enter Your Choice:\n");
         printf("\n1.Create a new account\t2.Deposit amount\t3.Withdraw amount\t4.Close Account\t5.Exit\n");
+        printf("\nEnter Your Choice:\n");
         scanf("%d", &choice);
 
         switch (choice)
