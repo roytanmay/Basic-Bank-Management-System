@@ -77,7 +77,7 @@ void deposit()
             scanf("%lf", &b);
             account->balance += b;
             printf("Amount deposited\nAvailable balance: %lf\n\n", account->balance);
-            executeGitCommand("status");
+            // executeGitCommand("status");
             executeGitCommand("add .");
             executeGitCommand("commit -m \"Balance deposited\"");
 
@@ -87,6 +87,8 @@ void deposit()
     }
     fclose(newrec);
     fclose(old);
+    remove("record.dat");
+    rename("new.dat", "record.dat");
 
     if (f == 0)
         printf("Account not found\n");
@@ -115,7 +117,7 @@ void withdraw()
             scanf("%lf", &b);
             account->balance -= b;
             printf("Amount Withdrawn\nAvailable balance: %lf\n\n", account->balance);
-            executeGitCommand("status");
+            // executeGitCommand("status");
             executeGitCommand("add .");
             executeGitCommand("commit -m \"Balance Withdrawn\"");
 
@@ -125,6 +127,8 @@ void withdraw()
     }
     fclose(newrec);
     fclose(old);
+    remove("record.dat");
+    rename("new.dat", "record.dat");
 
     if (f == 0)
         printf("Account not found\n");
@@ -156,9 +160,16 @@ void closeAccount()
     }
     fclose(newrec);
     fclose(old);
+    remove("record.dat");
+    rename("new.dat", "record.dat");
 
     if (f == 0)
         printf("Account not found\n");
+    else
+    {
+        executeGitCommand("add .");
+        executeGitCommand("commit -m \"Account Deleted\"");
+    }
 }
 
 int main()
