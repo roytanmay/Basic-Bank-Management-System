@@ -25,7 +25,7 @@ void createAccount()
 {
     FILE *ptr, *ptr2;
     ptr = fopen("record.dat", "a+");
-    ptr2 = fopen("accountNumber.dat", "r+");
+    ptr2 = fopen("accountNumber.dat", "r");
 
     Account *account = (Account *)malloc(sizeof(Account));
     printf("Enter your name:\n");
@@ -34,12 +34,16 @@ void createAccount()
     scanf("%s", &account->address);
     printf("Enter the amount you want to deposit initially(>= 500):\n");
     scanf("%lf", &account->balance);
+
     fscanf(ptr2, "%lld", &account->acno);
+    fclose(ptr2);
+
+    ptr2 = fopen("accountNumber.dat", "w");
     fprintf(ptr2, "%lld", account->acno + 1);
+    fclose(ptr2);
 
     fprintf(ptr, "%lld %s %s %lf\n", account->acno, account->name, account->address, account->balance);
     fclose(ptr);
-    fclose(ptr2);
 
     printf("Account Created Successfully\n");
 
