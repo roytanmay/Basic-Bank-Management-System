@@ -78,7 +78,7 @@ void deposit()
             account->balance += b;
             printf("Amount deposited\nAvailable balance: %lf\n\n", account->balance);
             fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
-            system("cls");
+            // system("cls");
 
             f = 1;
         }
@@ -125,7 +125,7 @@ void withdraw()
             printf("Amount Withdrawn\nAvailable balance: %lf\n\n", account->balance);
 
             fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
-            system("cls");
+            // system("cls");
 
             f = 1;
         }
