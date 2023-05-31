@@ -16,6 +16,7 @@ int acindex = 0;
 
 void executeGitCommand(const char *command)
 {
+    printf("hi");
     char gitCommand[100];
     snprintf(gitCommand, sizeof(gitCommand), "git %s", command);
     int result = system(gitCommand);
