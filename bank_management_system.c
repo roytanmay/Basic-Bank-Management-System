@@ -12,6 +12,7 @@ typedef struct Account
 } Account;
 
 Account *accounts[1000];
+int acindex = 0;
 
 void executeGitCommand(const char *command)
 {
@@ -35,6 +36,8 @@ Account *createAccount()
     scanf("%lf", &account->balance);
     account->acno = acnoInit++;
 
+    accounts[acindex++] = account;
+
     printf("Account Details:\n");
     printf("Name: %s\n", account->name);
     printf("Address: %s\n", account->address);
@@ -53,7 +56,7 @@ void deposit()
     int i;
     for (i = 0; i < 1000; i++)
     {
-        printf("Hi");
+        // printf("Hi");
         if (accounts[i]->acno == acno)
         {
             double b;
@@ -113,6 +116,7 @@ void closeAccount()
                 i++;
             }
             accounts[i] = NULL;
+            acindex--;
             executeGitCommand("add .");
             executeGitCommand("commit -m \"Account closed\"");
             return;
