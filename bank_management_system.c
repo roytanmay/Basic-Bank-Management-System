@@ -46,11 +46,11 @@ void createAccount()
     fprintf(ptr, "%lld %s %s %lf\n", account->acno, account->name, account->address, account->balance);
     fclose(ptr);
 
-    printf("Account Created Successfully\n");
+    printf("\nAccount Created Successfully\n");
 
     // accounts[acindex++] = account;
 
-    printf("Account Details:\n");
+    printf("\nAccount Details:\n");
     printf("Name: %s\n", account->name);
     printf("Address: %s\n", account->address);
     printf("Account number: %lld\n", account->acno);
