@@ -25,7 +25,7 @@ void createAccount()
 {
     FILE *ptr, *ptr2;
     ptr = fopen("record.dat", "a+");
-    ptr2 = fopen("accountNumber.dat", "w+");
+    ptr2 = fopen("accountNumber.dat", "r+");
 
     Account *account = (Account *)malloc(sizeof(Account));
     printf("Enter your name:\n");
@@ -146,7 +146,7 @@ void withdraw()
         remove("record.dat");
         rename("new.dat", "record.dat");
         executeGitCommand("add .");
-        executeGitCommand("commit -m \"Balance deposited\"");
+        executeGitCommand("commit -m \"Balance Withdrawn\"");
     }
 }
 
