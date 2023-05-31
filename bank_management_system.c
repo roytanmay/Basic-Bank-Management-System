@@ -34,6 +34,13 @@ Account *createAccount()
     printf("Enter the amount you want to deposit initially(>= 500):\n");
     scanf("%lf", &account->balance);
     account->acno = acnoInit++;
+
+    printf("Account Details:\n");
+    printf("Name: %s\n", account->name);
+    printf("Address: %s\n", account->address);
+    printf("Account number: %lld\n", account->acno);
+    printf("Balance: %lf\n", account->balance);
+
     executeGitCommand("add .");
     executeGitCommand("commit -m \"New Account Created\"");
 }
@@ -42,7 +49,7 @@ void deposit()
 {
     long long int acno;
     printf("Enter your account number:\n");
-    scanf("%l", &acno);
+    scanf("%lld", &acno);
     int i;
     for (i = 0; i < 1000; i++)
     {
@@ -65,7 +72,7 @@ void withdraw()
 {
     long long int acno;
     printf("Enter your account number:\n");
-    scanf("%l", &acno);
+    scanf("%lld", &acno);
     int i;
     for (i = 0; i < 1000; i++)
     {
@@ -93,7 +100,7 @@ void closeAccount()
 {
     long long int acno;
     printf("Enter your account number:\n");
-    scanf("%l", &acno);
+    scanf("%lld", &acno);
     int i;
     for (i = 0; i < 1000; i++)
     {
