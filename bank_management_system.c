@@ -77,13 +77,13 @@ void deposit()
             scanf("%lf", &b);
             account->balance += b;
             printf("Amount deposited\nAvailable balance: %lf\n\n", account->balance);
-            // executeGitCommand("status");
-            executeGitCommand("add .");
-            executeGitCommand("commit -m \"Balance deposited\"");
+            fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
+            system("cls");
 
             f = 1;
         }
-        fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
+        else
+            fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
     }
     fclose(newrec);
     fclose(old);
@@ -92,6 +92,12 @@ void deposit()
 
     if (f == 0)
         printf("Account not found\n");
+    else
+    {
+        // executeGitCommand("status");
+        executeGitCommand("add .");
+        executeGitCommand("commit -m \"Balance deposited\"");
+    }
 }
 
 void withdraw()
@@ -117,13 +123,14 @@ void withdraw()
             scanf("%lf", &b);
             account->balance -= b;
             printf("Amount Withdrawn\nAvailable balance: %lf\n\n", account->balance);
-            // executeGitCommand("status");
-            executeGitCommand("add .");
-            executeGitCommand("commit -m \"Balance Withdrawn\"");
+
+            fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
+            system("cls");
 
             f = 1;
         }
-        fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
+        else
+            fprintf(newrec, "%d %s %s %lf\n", account->acno, account->name, account->address, account->balance);
     }
     fclose(newrec);
     fclose(old);
@@ -132,6 +139,12 @@ void withdraw()
 
     if (f == 0)
         printf("Account not found\n");
+    else
+    {
+        // executeGitCommand("status");
+        executeGitCommand("add .");
+        executeGitCommand("commit -m \"Balance deposited\"");
+    }
 }
 
 void closeAccount()
